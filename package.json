@@ -11,6 +11,9 @@
   "keywords": [
     "github"
   ],
+  "bin": {
+    "gncc": "./dist/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf ./dist",
