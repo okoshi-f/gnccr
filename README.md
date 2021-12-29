@@ -1,0 +1,2 @@
+## GitHub Nice Code Collector
+
