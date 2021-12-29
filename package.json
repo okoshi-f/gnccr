@@ -1,12 +1,24 @@
 {
   "name": "github_nice_code_collector",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "On GitHub, collect and document the code that the reviewers wrote as nice.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/okosheep/github_nice_code_collector",
   "author": "Hiroomi Okoshi",
   "license": "MIT",
   "private": false,
+  "keywords": [
+    "github"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/okosheep/github_nice_code_collector/issues"
+  },
   "dependencies": {
     "octokit": "^1.7.1"
   },
