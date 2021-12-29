@@ -1,0 +1,10 @@
+{
+  "name": "github_nice_code_collector",
+  "version": "1.0.0",
+  "description": "On GitHub, collect and document the code that the reviewers wrote as nice.",
+  "main": "index.js",
+  "repository": "https://github.com/okosheep/github_nice_code_collector",
+  "author": "Hiroomi Okoshi",
+  "license": "MIT",
+  "private": false
+}
