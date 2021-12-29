@@ -17,7 +17,11 @@
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf ./dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "local-install": "yarn clean && yarn build && yarn pack && yarn add -D ./*.tgz",
+    "local-reinstall": "yarn local-uninstall && yarn local-install",
+    "local-uninstall": "yarn remove github_nice_code_collector && yarn cache clean && rm *.tgz",
+    "local-run": "node node_modules/.bin/gncc"
   },
   "bugs": {
     "url": "https://github.com/okosheep/github_nice_code_collector/issues"
