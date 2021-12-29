@@ -27,11 +27,17 @@
     "url": "https://github.com/okosheep/github_nice_code_collector/issues"
   },
   "dependencies": {
+    "comment-json": "^4.1.1",
     "octokit": "^1.7.1"
   },
   "devDependencies": {
     "@octokit/types": "^6.34.0",
     "@types/node": "^17.0.5",
     "typescript": "^4.5.4"
+  },
+  "gncc": {
+    "owner": "foo",
+    "repo": "bar",
+    "keywords": ["hello", "world"]
   }
 }
