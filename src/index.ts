@@ -1,5 +1,10 @@
-import { parse } from "comment-json"
-import * as fs from "fs"
+#!/usr/local/bin/node
 
-const params = parse(fs.readFileSync("./package.json", "utf8").toString()).gncc as Gncc.Params
-console.log(JSON.stringify(params))
+import { MainController } from "./controllers/MainController";
+
+MainController.execute().then((exitCode) => {
+  process.exit(exitCode ?? 0)
+}).catch((e) => {
+  console.error(e)
+  process.exit(1)
+})
