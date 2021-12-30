@@ -1,6 +1,9 @@
+# Created by https://www.toptal.com/developers/gitignore/api/direnv,node,yarn
+# Edit at https://www.toptal.com/developers/gitignore?templates=direnv,node,yarn
 
-# Created by https://www.toptal.com/developers/gitignore/api/node,yarn
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,yarn
+### direnv ###
+.direnv
+.envrc
 
 ### Node ###
 # Logs
@@ -148,4 +151,4 @@ dist
 # and uncomment the following lines
 # .pnp.*
 
-# End of https://www.toptal.com/developers/gitignore/api/node,yarn
+# End of https://www.toptal.com/developers/gitignore/api/direnv,node,yarn
