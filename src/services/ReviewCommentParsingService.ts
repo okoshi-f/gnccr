@@ -1,9 +1,10 @@
-import { Serviceable } from "./Serviceable";
+import { ReviewTemplateService } from "./ReviewTemplateService"
+import { Serviceable } from "./Serviceable"
 
-export class ReviewCommentParsingService implements Serviceable<any, void> {
-  constructor(private writerService: Serviceable<string, void>) {}
+export class ReviewCommentParsingService implements Serviceable<any, string> {
+  private templateService = new ReviewTemplateService()
 
-  public execute(data: any): void {
-    this.writerService.execute(data);
+  public execute(data: any): string {
+    return this.templateService.execute(data)
   }
 }
