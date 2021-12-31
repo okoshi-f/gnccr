@@ -2,9 +2,11 @@
 
 import { MainController } from "./controllers/MainController";
 
-MainController.execute().then((exitCode) => {
-  process.exit(exitCode ?? 0)
-}).catch((e) => {
-  console.error(e)
-  process.exit(1)
-})
+MainController.execute()
+  .then((exitCode) => {
+    process.exit(exitCode ?? 0);
+  })
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
