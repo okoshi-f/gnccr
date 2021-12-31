@@ -1,20 +1,18 @@
 import { ParametersService } from "../services/ParametersService"
-import { IssuesService } from "../services/IssuesService"
-import { IssueParserService } from "../services/IssueParserService"
+import { ReviewCommentsService } from "../services/ReviewCommentsService"
+import { ReviewCommentParsingService } from "../services/ReviewCommentParsingService"
 import { TextFileWriterService } from "../services/TextFileWriterService"
 
 export class MainController {
-  private constructor(params: Gnccr.Params) {
-    this.params = params
+  private constructor(private params: Gnccr.Params) {
     this.writerService = new TextFileWriterService(this.params.destination)
-    this.parserService = new IssueParserService(this.writerService)
-    this.issuesService = new IssuesService(this.parserService)
+    this.parserService = new ReviewCommentParsingService(this.writerService)
+    this.issuesService = new ReviewCommentsService(this.parserService)
   }
 
-  private params: Gnccr.Params
   private writerService: TextFileWriterService
-  private parserService: IssueParserService
-  private issuesService: IssuesService
+  private parserService: ReviewCommentParsingService
+  private issuesService: ReviewCommentsService
 
   public doExecute(): Promise<number | void> {
     return this.issuesService.execute(this.params)

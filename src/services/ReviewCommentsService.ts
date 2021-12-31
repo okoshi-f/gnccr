@@ -1,16 +1,13 @@
 import { OctokitResponse } from "@octokit/types"
-import { Service } from "./Service"
-import { OctokitRepository } from "../repositories/OctokitRepository"
+import { Serviceable } from "./Serviceable"
+import { ReviewCommentsRepository } from "../repositories/ReviewCommentsRepository"
 
-export class IssuesService
-  implements Service<Gnccr.Params, Promise<number | void>>
+export class ReviewCommentsService
+  implements Serviceable<Gnccr.Params, Promise<number | void>>
 {
-  constructor(parserService: Service<any, void>) {
-    this.parserService = parserService
-  }
+  constructor(private parserService: Serviceable<any, void>) {}
 
-  private parserService: Service<any, void>
-  private octokitService = new OctokitRepository()
+  private octokitService = new ReviewCommentsRepository()
 
   public execute(params: Gnccr.Params): Promise<number | void> {
     const goodFilter = (e: any) =>

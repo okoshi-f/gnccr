@@ -1,13 +1,9 @@
-import { Service } from "./Service";
+import { Serviceable } from "./Serviceable";
 
-export class TextFileWriterService implements Service<string, void> {
-  constructor(filename: string) {
-    this.filename = filename
-  }
-
-  private filename: string
+export class TextFileWriterService implements Serviceable<string, void> {
+  constructor(private filename: string) {}
 
   public execute(data: string): void {
-    console.log(`filename=${this.filename}, data=${data}`)
+    console.log(`filename=${this.filename}, data=${JSON.stringify(data)}`)
   }
 }
