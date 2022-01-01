@@ -1,4 +1,4 @@
-# GitHub Nice Code Collector
+# GNCCR is GitHub Nice Code Collection and Reporter
 
 On GitHub, collect and document the code that the reviewers wrote as nice.
 
@@ -7,13 +7,13 @@ On GitHub, collect and document the code that the reviewers wrote as nice.
 Install with npm:
 
 ```
-npm i -D github_nice_code_collector
+npm i -D gnccr
 ```
 
 Install with yarn:
 
 ```
-yarn add -D github_nice_code_collector
+yarn add -D gnccr
 ```
 
 ## Usage

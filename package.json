@@ -1,10 +1,10 @@
 {
-  "name": "github_nice_code_collector",
+  "name": "gnccr",
   "version": "0.0.1",
   "description": "On GitHub, collect and document the code that the reviewers wrote as nice.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/okosheep/github_nice_code_collector",
+  "repository": "https://github.com/okosheep/gnccr",
   "author": "Hiroomi Okoshi",
   "license": "MIT",
   "private": false,
@@ -25,12 +25,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "local-install": "yarn clean && yarn build && yarn pack && yarn add -D ./*.tgz",
     "local-reinstall": "yarn local-uninstall && yarn local-install",
-    "local-uninstall": "yarn remove github_nice_code_collector && yarn cache clean && rm *.tgz",
+    "local-uninstall": "yarn remove gnccr && yarn cache clean && rm *.tgz",
     "local-run": "node node_modules/.bin/gnccr",
     "prepublishOnly": "tsc"
   },
   "bugs": {
-    "url": "https://github.com/okosheep/github_nice_code_collector/issues"
+    "url": "https://github.com/okosheep/gnccr/issues"
   },
   "dependencies": {
     "@octokit/request": "^5.6.2",
@@ -58,7 +58,7 @@
   },
   "gnccr": {
     "owner": "okosheep",
-    "repo": "github_nice_code_collector",
+    "repo": "gnccr",
     "keywords": [
       "👍",
       ":+1:"
