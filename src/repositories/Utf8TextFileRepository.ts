@@ -1,6 +1,6 @@
 import * as fs from "fs"
-import { Findable } from "./Findable"
-import { Saveable } from "./Saveable"
+import { Findable } from "repositories/Findable"
+import { Saveable } from "repositories/Saveable"
 
 export class Utf8TextFileRepository
   implements Findable<void, string>, Saveable<string, void>

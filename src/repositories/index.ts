@@ -1,3 +1,3 @@
-export * from "./PackageJsonRepository"
-export * from "./ReviewCommentsRepository"
-export * from "./Utf8TextFileRepository"
+export * from "repositories/PackageJsonRepository"
+export * from "repositories/ReviewCommentsRepository"
+export * from "repositories/Utf8TextFileRepository"

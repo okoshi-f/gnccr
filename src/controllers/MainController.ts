@@ -3,7 +3,7 @@ import {
   ReviewCommentsService,
   TextFileWriterService,
   TemplateService,
-} from "../services"
+} from "services"
 
 export class MainController {
   private constructor(private params: Gnccr.Params) {

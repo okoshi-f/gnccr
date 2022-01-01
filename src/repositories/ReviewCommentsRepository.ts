@@ -1,6 +1,6 @@
 import { Octokit } from "@octokit/rest"
 import { OctokitResponse } from "@octokit/types"
-import { Listable } from "./Listable"
+import { Listable } from "repositories/Listable"
 
 export class ReviewCommentsRepository
   implements Listable<Gnccr.Params, Promise<OctokitResponse<any>>>

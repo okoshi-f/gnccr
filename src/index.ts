@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { MainController } from "./controllers"
+import { MainController } from "controllers"
 
 MainController.execute()
   .then((exitCode) => {

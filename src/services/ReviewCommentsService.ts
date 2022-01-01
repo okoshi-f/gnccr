@@ -1,6 +1,6 @@
 import { OctokitResponse } from "@octokit/types"
-import { Serviceable } from "./Serviceable"
-import { ReviewCommentsRepository } from "../repositories"
+import { Serviceable } from "services/Serviceable"
+import { ReviewCommentsRepository } from "repositories"
 
 export class ReviewCommentsService
   implements Serviceable<Gnccr.Params, Promise<Array<Gnccr.Review>>>

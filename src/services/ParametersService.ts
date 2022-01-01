@@ -1,6 +1,6 @@
 import { parse } from "comment-json"
-import { PackageJsonRepository } from "../repositories"
-import { Serviceable } from "./Serviceable"
+import { PackageJsonRepository } from "repositories"
+import { Serviceable } from "services/Serviceable"
 
 export class ParametersService
   implements Serviceable<void, Gnccr.Params | null>

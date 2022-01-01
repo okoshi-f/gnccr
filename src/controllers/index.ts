@@ -1,1 +1,1 @@
-export * from "./MainController"
+export * from "controllers/MainController"

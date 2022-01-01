@@ -1,4 +1,4 @@
-import { Serviceable } from "./Serviceable"
+import { Serviceable } from "services/Serviceable"
 import ejs from "ejs"
 
 export class TemplateService
