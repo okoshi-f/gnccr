@@ -1,5 +1,5 @@
 import { parse } from "comment-json"
-import { PackageJsonRepository } from "../repositories/PackageJsonRepository"
+import { PackageJsonRepository } from "../repositories"
 import { Serviceable } from "./Serviceable"
 
 export class ParametersService

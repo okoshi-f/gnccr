@@ -1,21 +1,22 @@
-import { ParametersService } from "../services/ParametersService"
-import { ReviewCommentsService } from "../services/ReviewCommentsService"
-import { ReviewCommentParsingService } from "../services/ReviewCommentParsingService"
-import { TextFileWriterService } from "../services/TextFileWriterService"
-import { ReviewsTemplateService } from "../services/ReviewsTemplateService"
+import {
+  ParametersService,
+  ReviewCommentsService,
+  TextFileWriterService,
+  TemplateService,
+} from "../services"
 
 export class MainController {
   private constructor(private params: Gnccr.Params) {
     this.writerService = new TextFileWriterService(this.params.destination)
-    this.parsingService = new ReviewCommentParsingService()
-    this.reviewCommentsService = new ReviewCommentsService(this.parsingService)
-    this.templateService = new ReviewsTemplateService()
+    this.reviewCommentsService = new ReviewCommentsService()
+    this.templateService = new TemplateService(
+      this.asText(this.params.template)
+    )
   }
 
   private writerService: TextFileWriterService
-  private parsingService: ReviewCommentParsingService
   private reviewCommentsService: ReviewCommentsService
-  private templateService: ReviewsTemplateService
+  private templateService: TemplateService
 
   public doExecute(): Promise<number> {
     return this.reviewCommentsService.execute(this.params).then((reviews) => {
@@ -23,6 +24,13 @@ export class MainController {
       this.writerService.execute(markdown)
       return 0
     })
+  }
+
+  private asText(value: any): string {
+    if (value instanceof Array) {
+      return value.join("\n")
+    }
+    return value
   }
 
   public static execute(): Promise<number | void> {

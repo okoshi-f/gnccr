@@ -1,12 +1,12 @@
-#!/usr/local/bin/node
+#!/usr/bin/env node
 
-import { MainController } from "./controllers/MainController";
+import { MainController } from "./controllers"
 
 MainController.execute()
   .then((exitCode) => {
-    process.exit(exitCode ?? 0);
+    process.exit(exitCode ?? 0)
   })
   .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  });
+    console.error(e)
+    process.exit(1)
+  })

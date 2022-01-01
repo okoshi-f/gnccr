@@ -18,7 +18,7 @@
     "build": "tsc",
     "watch": "tsc -w",
     "clean": "rm -rf ./dist",
-    "format": "prettier --write src/**/*.ts",
+    "format": "prettier --write src/**/*.ts src/*.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "local-install": "yarn clean && yarn build && yarn pack && yarn add -D ./*.tgz",
     "local-reinstall": "yarn local-uninstall && yarn local-install",
@@ -60,6 +60,27 @@
       ":+1:"
     ],
     "since": "2021-01-01T00:00:00.000Z",
-    "destination": "./dist/gnccr.md"
+    "destination": "./dist/gnccr.md",
+    "template": [
+      "# Default Template",
+      "",
+      "This is template.",
+      "",
+      "<% reviews.forEach((value, key) => { %>",
+      "## Body",
+      "",
+      "<%= value.body %>",
+      "",
+      "## Diff",
+      "",
+      "```",
+      "<%= value.diff_hunk %>",
+      "```",
+      "",
+      "## Link",
+      "",
+      "- [%<= value.path %>](<%= value.html_url %>)",
+      "<% }) %>"
+    ]
   }
 }

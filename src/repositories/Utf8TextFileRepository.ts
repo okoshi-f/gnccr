@@ -5,7 +5,7 @@ import { Saveable } from "./Saveable"
 export class Utf8TextFileRepository
   implements Findable<void, string>, Saveable<string, void>
 {
-  public constructor(private filename: string) {}
+  constructor(private filename: string) {}
 
   public find(): string {
     return fs.readFileSync(this.filename, "utf8").toString()

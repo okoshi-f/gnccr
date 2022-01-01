@@ -1,15 +1,13 @@
 import { OctokitResponse } from "@octokit/types"
 import { Serviceable } from "./Serviceable"
-import { ReviewCommentsRepository } from "../repositories/ReviewCommentsRepository"
+import { ReviewCommentsRepository } from "../repositories"
 
 export class ReviewCommentsService
-  implements Serviceable<Gnccr.Params, Promise<Array<string>>>
+  implements Serviceable<Gnccr.Params, Promise<Array<Gnccr.Review>>>
 {
-  constructor(private parserService: Serviceable<any, string>) {}
-
   private reviewCommentsRepository = new ReviewCommentsRepository()
 
-  public execute(params: Gnccr.Params): Promise<Array<string>> {
+  public execute(params: Gnccr.Params): Promise<Array<Gnccr.Review>> {
     const goodFilter = (e: any) =>
       params.keywords.filter((item) => e.body?.indexOf(item) !== -1).length > 0
     return this.reviewCommentsRepository
@@ -17,7 +15,7 @@ export class ReviewCommentsService
       .then((response: OctokitResponse<any>) =>
         response.data
           .filter(goodFilter)
-          .map((i: any) => this.parserService.execute(i))
+          .map((review: any) => review as Gnccr.Review)
       )
   }
 }
