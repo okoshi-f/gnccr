@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { MainController } from "./controllers"
 
 MainController.execute()
