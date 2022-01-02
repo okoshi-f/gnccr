@@ -8,7 +8,7 @@ export class DestinationDispatchService
     switch (destination.type) {
       case "file":
         if (destination.path) {
-          return new TextFileWriterService(destination.path)
+          return new TextFileWriterService(destination.path, destination.overwrite ?? false)
         }
         throw new Error("Destination path is required")
       case "stdout":
