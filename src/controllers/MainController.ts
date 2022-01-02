@@ -1,8 +1,8 @@
-import { DestinationDispatchService } from "../services"
 import {
   ParametersService,
   ReviewCommentsService,
   TemplateService,
+  DestinationDispatchService,
 } from "../services"
 
 export class MainController {
