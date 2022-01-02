@@ -12,6 +12,7 @@
     "github"
   ],
   "files": [
+    "bin",
     "dist"
   ],
   "bin": {
