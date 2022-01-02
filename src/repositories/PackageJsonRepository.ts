@@ -1,5 +1,5 @@
-import { Findable } from "repositories/Findable"
-import { Utf8TextFileRepository } from "repositories"
+import { Findable } from "./Findable"
+import { Utf8TextFileRepository } from "./"
 
 export class PackageJsonRepository implements Findable<void, string> {
   private utf8TextFileRepository = new Utf8TextFileRepository("./package.json")

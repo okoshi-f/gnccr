@@ -1,5 +1,5 @@
-import { Utf8TextFileRepository } from "repositories"
-import { Serviceable } from "services/Serviceable"
+import { Utf8TextFileRepository } from "../repositories"
+import { Serviceable } from "./Serviceable"
 
 export class TextFileWriterService implements Serviceable<string, void> {
   constructor(private filename: string) {}
