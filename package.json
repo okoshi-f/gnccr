@@ -1,6 +1,6 @@
 {
   "name": "gnccr",
-  "version": "0.0.9-alpha",
+  "version": "0.0.10-alpha",
   "description": "On GitHub, collect and document the code that the reviewers wrote as nice.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
