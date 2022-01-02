@@ -1,6 +1,6 @@
 # GNCCR is GitHub Nice Code Collection and Reporter
 
-On GitHub, collect and document the code that the reviewers wrote as nice.
+On GitHub, collect and report the code that the reviewers wrote as nice.
 
 ## Installing
 
