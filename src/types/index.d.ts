@@ -4,8 +4,14 @@ declare module Gnccr {
     repo: string
     keywords: Array<string>
     sinceOffsetDaysBefore: number
-    destination: string
-    template: string
+    destination: Destination
+    template: string | Array<string>
+  }
+
+  export type Destination = {
+    type: string
+    path?: string
+    overwrite?: boolean
   }
 
   export type Review = {

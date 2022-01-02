@@ -71,7 +71,11 @@
       ":+1:"
     ],
     "sinceOffsetDaysBefore": 7,
-    "destination": "./dist/gnccr.md",
+    "destination": {
+      "type": "stdout",
+      "path": "./dist/gnccr.md",
+      "overwrite": true
+    },
     "template": [
       "# Default Template",
       "",

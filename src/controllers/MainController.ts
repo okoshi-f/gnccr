@@ -1,27 +1,31 @@
+import { DestinationDispatchService } from "services/DestinationDispatchService"
 import {
   ParametersService,
   ReviewCommentsService,
-  TextFileWriterService,
   TemplateService,
 } from "../services"
 
 export class MainController {
   private constructor(private params: Gnccr.Params) {
-    this.writerService = new TextFileWriterService(this.params.destination)
+    this.destinationDispatchService = new DestinationDispatchService()
     this.reviewCommentsService = new ReviewCommentsService()
     this.templateService = new TemplateService(
       this.asText(this.params.template)
     )
   }
 
-  private writerService: TextFileWriterService
+  private destinationDispatchService: DestinationDispatchService
   private reviewCommentsService: ReviewCommentsService
   private templateService: TemplateService
 
   public doExecute(): Promise<number> {
+    const writerService = this.destinationDispatchService.execute(
+      this.params.destination
+    )
+
     return this.reviewCommentsService.execute(this.params).then((reviews) => {
       const markdown = this.templateService.execute({ reviews: reviews })
-      this.writerService.execute(markdown)
+      writerService.execute(markdown)
       return 0
     })
   }
