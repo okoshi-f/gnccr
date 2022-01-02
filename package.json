@@ -18,6 +18,11 @@
   "bin": {
     "gnccr": "./bin/index.js"
   },
+  "exports": {
+    "controllers": "./dist/controllers/index.js",
+    "services": "./dist/services/index.js",
+    "repositories": "./dist/repositories/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
