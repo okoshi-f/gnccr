@@ -70,7 +70,7 @@
       "👍",
       ":+1:"
     ],
-    "since": "2021-01-01T00:00:00.000Z",
+    "sinceOffsetDaysBefore": 7,
     "destination": "./dist/gnccr.md",
     "template": [
       "# Default Template",

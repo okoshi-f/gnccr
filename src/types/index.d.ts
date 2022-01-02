@@ -3,7 +3,7 @@ declare module Gnccr {
     owner: string
     repo: string
     keywords: Array<string>
-    since: string
+    sinceOffsetDaysBefore: number
     destination: string
     template: string
   }
