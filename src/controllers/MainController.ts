@@ -1,4 +1,4 @@
-import { DestinationDispatchService } from "services/DestinationDispatchService"
+import { DestinationDispatchService } from "../services"
 import {
   ParametersService,
   ReviewCommentsService,
