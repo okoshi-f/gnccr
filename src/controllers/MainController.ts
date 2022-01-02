@@ -19,15 +19,20 @@ export class MainController {
   private templateService: TemplateService
 
   public doExecute(): Promise<number> {
-    const writerService = this.destinationDispatchService.execute(
-      this.params.destination
-    )
-
-    return this.reviewCommentsService.execute(this.params).then((reviews) => {
-      const markdown = this.templateService.execute({ reviews: reviews })
-      writerService.execute(markdown)
-      return 0
-    })
+    return this.reviewCommentsService
+      .execute(this.params)
+      .then((reviews) => {
+        const markdown = this.templateService.execute({ reviews: reviews })
+        const writerService = this.destinationDispatchService.execute(
+          this.params.destination
+        )
+        writerService.execute(markdown)
+        return 0
+      })
+      .catch((e) => {
+        console.error(e.message)
+        return 3
+      })
   }
 
   private asText(value: any): string {
