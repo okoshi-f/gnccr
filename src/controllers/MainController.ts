@@ -29,10 +29,6 @@ export class MainController {
         writerService.execute(markdown)
         return 0
       })
-      .catch((e) => {
-        console.error(e.message)
-        return 3
-      })
   }
 
   private asText(value: any): string {
@@ -45,8 +41,8 @@ export class MainController {
   public static execute(): Promise<number | void> {
     const parametersService = new ParametersService()
     const params = parametersService.execute()
-    if (params === null) {
-      return Promise.resolve(2)
+    if (!params) {
+      return Promise.reject(new Error("No parameters found"))
     }
 
     const main = new MainController(params)
