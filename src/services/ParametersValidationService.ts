@@ -51,7 +51,7 @@ export class ParametersValidationService
       throw new Error("Destination must be an Gnccr.Destination")
     }
 
-    if (destination.type in ["file", "stdout"]) {
+    if (!(["file", "stdout"].includes(destination.type))) {
       throw new Error("Destination type must be either file or stdout")
     }
   }
