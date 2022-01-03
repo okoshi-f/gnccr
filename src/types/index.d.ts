@@ -14,10 +14,20 @@ declare module Gnccr {
     overwrite?: boolean
   }
 
+  export type User = {
+    login?: string
+    avatar_url?: string
+  }
+
   export type Review = {
-    body: string
-    diff_hunk: string
-    html_url: string
-    path: string
+    body?: string
+    diff_hunk?: string
+    html_url?: string
+    path?: string
+    user?: User
+    pull_request_url?: string
+    created_at?: string
+    updated_at?: string
+    author_association?: string
   }
 }
