@@ -1,5 +1,6 @@
 import {
   ParametersService,
+  ParametersValidationService,
   ReviewCommentsService,
   TemplateService,
   DestinationDispatchService,
@@ -19,16 +20,14 @@ export class MainController {
   private templateService: TemplateService
 
   public doExecute(): Promise<number> {
-    return this.reviewCommentsService
-      .execute(this.params)
-      .then((reviews) => {
-        const markdown = this.templateService.execute({ reviews: reviews })
-        const writerService = this.destinationDispatchService.execute(
-          this.params.destination
-        )
-        writerService.execute(markdown)
-        return 0
-      })
+    return this.reviewCommentsService.execute(this.params).then((reviews) => {
+      const markdown = this.templateService.execute({ reviews: reviews })
+      const writerService = this.destinationDispatchService.execute(
+        this.params.destination
+      )
+      writerService.execute(markdown)
+      return 0
+    })
   }
 
   private asText(value: any): string {
@@ -43,6 +42,11 @@ export class MainController {
     const params = parametersService.execute()
     if (!params) {
       return Promise.reject(new Error("No parameters found"))
+    }
+    const parametersValidationService = new ParametersValidationService(params)
+    const error = parametersValidationService.execute()
+    if (error) {
+      return Promise.reject(error)
     }
 
     const main = new MainController(params)
