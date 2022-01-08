@@ -7,6 +7,8 @@ export class ParametersValidationService
 
   public execute(): Error | null {
     try {
+      this.validateOwner()
+      this.validateRepo()
       this.validateKeywords()
       this.validateDestination()
       this.validateTemplate()
@@ -18,6 +20,30 @@ export class ParametersValidationService
       throw e
     }
     return null
+  }
+
+  private validateOwner(): void {
+    const owner = this.params.owner
+
+    if (!owner) {
+      throw new Error("No owner found")
+    }
+
+    if (typeof owner !== "string") {
+      throw new Error("Owner must be a string")
+    }
+  }
+
+  private validateRepo(): void {
+    const repo = this.params.repo
+
+    if (!repo) {
+      throw new Error("No repo found")
+    }
+
+    if (typeof repo !== "string") {
+      throw new Error("Repo must be a string")
+    }
   }
 
   private validateKeywords(): void {
@@ -69,6 +95,10 @@ export class ParametersValidationService
 
     if (template instanceof Array && template.length === 0) {
       throw new Error("Template must be an array with at least one element")
+    }
+
+    if (template instanceof Array && template.some((t) => typeof t !== "string")) {
+      throw new Error("Template must be an array of strings")
     }
   }
 
