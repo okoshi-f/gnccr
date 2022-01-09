@@ -8,6 +8,6 @@ export class ParametersService
   private packageJsonRepository = new PackageJsonRepository()
 
   public execute(): Gnccr.Params | null {
-    return parse(this.packageJsonRepository.find()).gnccr as Gnccr.Params
+    return parse(this.packageJsonRepository.find()).gnccr as Gnccr.Params || null
   }
 }
