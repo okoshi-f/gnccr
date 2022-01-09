@@ -1,4 +1,4 @@
-[![CI](https://github.com/okosheep/gnccr/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/okosheep/gnccr/actions/workflows/ci.yml)
+[![CI](https://github.com/okosheep/gnccr/actions/workflows/ci.yml/badge.svg)](https://github.com/okosheep/gnccr/actions/workflows/ci.yml)
 
 # GNCCR is GitHub Nice Code Collection and Reporter
 
