@@ -1,3 +1,5 @@
+[![CI](https://github.com/okosheep/gnccr/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/okosheep/gnccr/actions/workflows/ci.yml)
+
 # GNCCR is GitHub Nice Code Collection and Reporter
 
 On GitHub, collect and report the code that the reviewers wrote as nice.
