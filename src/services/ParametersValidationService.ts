@@ -1,36 +1,35 @@
+import { Validated } from "../utils"
 import { Serviceable } from "./Serviceable"
 
 export class ParametersValidationService
-  implements Serviceable<void, Error | null>
+  implements Serviceable<void, Validated>
 {
   constructor(private params: Gnccr.Params) {}
 
-  public execute(): Error | null {
-    try {
-      this.validateOwner()
-      this.validateRepo()
-      this.validateKeywords()
-      this.validateDestination()
-      this.validateTemplate()
-      this.validateSinceOffsetDaysBefore()
-    } catch (e) {
-      if (e instanceof Error) {
-        return e
-      }
-      throw e
-    }
-    return null
+  private validated = new Validated()
+
+  public execute(): Validated {
+    this.validateOwner()
+    this.validateRepo()
+    this.validateKeywords()
+    this.validateDestination()
+    this.validateTemplate()
+    this.validateSinceOffsetDaysBefore()
+
+    return this.validated
   }
 
   private validateOwner(): void {
     const owner = this.params.owner
 
     if (!owner) {
-      throw new Error("No owner found")
+      this.validated.addError("No owner found")
+      return
     }
 
     if (typeof owner !== "string") {
-      throw new Error("Owner must be a string")
+      this.validated.addError("Owner must be a string")
+      return
     }
   }
 
@@ -38,11 +37,13 @@ export class ParametersValidationService
     const repo = this.params.repo
 
     if (!repo) {
-      throw new Error("No repo found")
+      this.validated.addError("No repo found")
+      return
     }
 
     if (typeof repo !== "string") {
-      throw new Error("Repo must be a string")
+      this.validated.addError("Repo must be a string")
+      return
     }
   }
 
@@ -50,19 +51,25 @@ export class ParametersValidationService
     const keywords = this.params.keywords
 
     if (!keywords) {
-      throw new Error("No keywords found")
+      this.validated.addError("No keywords found")
+      return
     }
 
     if (!(keywords instanceof Array)) {
-      throw new Error("Keywords must be an array")
+      this.validated.addError("Keywords must be an array")
+      return
     }
 
     if (keywords.length === 0) {
-      throw new Error("Keywords must be an array with at least one element")
+      this.validated.addError(
+        "Keywords must be an array with at least one element"
+      )
+      return
     }
 
     if (keywords.some((keyword) => typeof keyword !== "string")) {
-      throw new Error("Keywords must be an array of strings")
+      this.validated.addError("Keywords must be an array of strings")
+      return
     }
   }
 
@@ -70,15 +77,18 @@ export class ParametersValidationService
     const destination = this.params.destination
 
     if (!destination) {
-      throw new Error("No destination found")
+      this.validated.addError("No destination found")
+      return
     }
 
     if (!(destination instanceof Object)) {
-      throw new Error("Destination must be an Gnccr.Destination")
+      this.validated.addError("Destination must be an Gnccr.Destination")
+      return
     }
 
-    if (!(["file", "stdout"].includes(destination.type))) {
-      throw new Error("Destination type must be either file or stdout")
+    if (!["file", "stdout"].includes(destination.type)) {
+      this.validated.addError("Destination type must be either file or stdout")
+      return
     }
   }
 
@@ -86,19 +96,28 @@ export class ParametersValidationService
     const template = this.params.template
 
     if (!template) {
-      throw new Error("No template found")
+      this.validated.addError("No template found")
+      return
     }
 
     if (!(template instanceof Array || typeof template === "string")) {
-      throw new Error("Template must be an array or string")
+      this.validated.addError("Template must be an array or string")
+      return
     }
 
     if (template instanceof Array && template.length === 0) {
-      throw new Error("Template must be an array with at least one element")
+      this.validated.addError(
+        "Template must be an array with at least one element"
+      )
+      return
     }
 
-    if (template instanceof Array && template.some((t) => typeof t !== "string")) {
-      throw new Error("Template must be an array of strings")
+    if (
+      template instanceof Array &&
+      template.some((t) => typeof t !== "string")
+    ) {
+      this.validated.addError("Template must be an array of strings")
+      return
     }
   }
 
@@ -106,15 +125,18 @@ export class ParametersValidationService
     const sinceOffsetDaysBefore = this.params.sinceOffsetDaysBefore
 
     if (!sinceOffsetDaysBefore) {
-      throw new Error("No sinceOffsetDaysBefore found")
+      this.validated.addError("No sinceOffsetDaysBefore found")
+      return
     }
 
     if (typeof sinceOffsetDaysBefore !== "number") {
-      throw new Error("SinceOffsetDaysBefore must be a number")
+      this.validated.addError("SinceOffsetDaysBefore must be a number")
+      return
     }
 
     if (sinceOffsetDaysBefore < 0) {
-      throw new Error("SinceOffsetDaysBefore must be a positive number")
+      this.validated.addError("SinceOffsetDaysBefore must be a positive number")
+      return
     }
   }
 }

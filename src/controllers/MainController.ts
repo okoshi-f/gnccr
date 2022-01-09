@@ -44,9 +44,9 @@ export class MainController {
       return Promise.reject(new Error("No parameters found"))
     }
     const parametersValidationService = new ParametersValidationService(params)
-    const error = parametersValidationService.execute()
-    if (error) {
-      return Promise.reject(error)
+    const validated = parametersValidationService.execute()
+    if (!validated.isValid()) {
+      return Promise.reject(validated.getErrors().join("\n"))
     }
 
     const main = new MainController(params)
