@@ -14,7 +14,7 @@ describe("ParametersValidationService", () => {
   const subject = () => new ParametersValidationService(params()).execute().getErrors()
 
   describe("when valid params specified", () => {
-    it("returns null", () => {
+    it("returns empty array", () => {
       expect(subject()).toEqual([])
     })
   })
@@ -150,7 +150,7 @@ describe("ParametersValidationService", () => {
     })
 
     describe("when array of strings specified", () => {
-      it("returns null", () => {
+      it("returns empty array", () => {
         params = () => ({ ...paramsOrigin, template: ["template1", "template2"] })
         expect(subject()).toEqual([])
       })
